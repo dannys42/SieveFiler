@@ -32,3 +32,24 @@ public struct Folder {
         return sources
     }
 }
+
+extension Folder: Identifiable {
+    public var id: String {
+        return self.folder
+    }
+}
+
+
+extension Folder: UniqueKeys {
+    public var uniqueKeys: [String] {
+        var returnValues: [String] = []
+
+        for fields in self.fields {
+            for field in fields.fields {
+                returnValues.append(self.folder + "|" + field.rawValue)
+            }
+        }
+
+        return returnValues
+    }
+}

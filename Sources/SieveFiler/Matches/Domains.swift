@@ -38,3 +38,9 @@ public struct Domains: Match {
         """)]
     }
 }
+
+extension Domains: UniqueKeys {
+    public var uniqueKeys: [String] {
+        return self.rawValues
+    }
+}

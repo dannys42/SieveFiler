@@ -9,9 +9,13 @@ import Foundation
 
 
 public struct Fields {
-    public enum Field: String {
+    public enum Field: String, Identifiable {
         case from = "From"
         case replyTo = "Reply-To"
+
+        public var id: String {
+            return self.rawValue
+        }
     }
 
     let fields: [Field]
@@ -31,5 +35,33 @@ public struct Fields {
         }
 
         return sources
+    }
+}
+
+extension Fields: UniqueKeys {
+    public var uniqueKeys: [String] {
+        var returnValues: [String] = []
+
+        for field in self.fields {
+            for match in self.matches {
+                for matchKey in match.uniqueKeys {
+                    returnValues.append(field.rawValue + "|" + matchKey)
+                }
+            }
+        }
+
+        return returnValues
+    }
+}
+
+extension [Fields]: UniqueKeys {
+    public var uniqueKeys: [String] {
+        var returnValues: [String] = []
+
+        for field in self {
+            returnValues.append(contentsOf: field.uniqueKeys)
+        }
+        
+        return returnValues
     }
 }

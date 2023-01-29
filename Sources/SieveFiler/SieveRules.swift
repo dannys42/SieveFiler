@@ -16,10 +16,30 @@ public struct SieveRulesBuilder {
 
 public struct SieveRules {
 
+    enum Failures: Error {
+        case existingRuleForFolder(String, String)
+    }
+
     let folders: [Folder]
 
-    public init(@SieveRulesBuilder _ content: () -> [Folder]) {
-        self.folders = content()
+    public init(@SieveRulesBuilder _ content: () throws -> [Folder]) rethrows {
+        self.folders = try content()
+    }
+
+    public func validate() throws {
+        var existingRules: [String:String] = [:]
+        for folder in folders {
+            let keys = folder.fields.uniqueKeys
+            for key in keys {
+                if let destinationFolder = existingRules[key] {
+                    if destinationFolder != folder.folder {
+                        throw Failures.existingRuleForFolder(folder.folder, key)
+                    }
+                } else {
+                    existingRules[key] = folder.folder
+                }
+            }
+        }
     }
 
     @discardableResult

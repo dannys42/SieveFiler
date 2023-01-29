@@ -14,7 +14,7 @@ public struct MatchBuilder {
     }
 }
 
-public protocol Match {
+public protocol Match: UniqueKeys {
     var rawValues: [String] { get }
 
     func fileIntoRule(folder: Folder, fields: [Fields.Field]) -> [SieveSource]

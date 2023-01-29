@@ -77,4 +77,63 @@ final class ValidationTests: XCTestCase {
          }
     }
 
+
+    // MARK: Enforce valid address symbols
+    func testThat_Address_CannotHaveAsteriskSymbol() throws {
+        let rules = SieveRules {
+             Folder("Mailbox1") {
+                 Fields(.from) {
+                     Domains("someone*@domain1.com")
+                 }
+             }
+         }
+
+         try XCTExpectFailure {
+             try rules.validate()
+         }
+    }
+
+    func testThat_Address_MustHaveAtSymbol() throws {
+        let rules = SieveRules {
+             Folder("Mailbox1") {
+                 Fields(.from) {
+                     Addresses("domain1.com")
+                 }
+             }
+         }
+
+         try XCTExpectFailure {
+             try rules.validate()
+         }
+    }
+
+    func testThat_Address_MustHaveDotSymbol() throws {
+        let rules = SieveRules {
+             Folder("Mailbox1") {
+                 Fields(.from) {
+                     Addresses("someone@domain1_com")
+                 }
+             }
+         }
+
+         try XCTExpectFailure {
+             try rules.validate()
+         }
+    }
+
+    func testThat_Address_MustNotStartWithAtSymbol() throws {
+        let rules = SieveRules {
+             Folder("Mailbox1") {
+                 Fields(.from) {
+                     Addresses("@domain1.com")
+                 }
+             }
+         }
+
+         try XCTExpectFailure {
+             try rules.validate()
+         }
+    }
+
+
 }

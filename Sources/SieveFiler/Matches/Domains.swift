@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Domains.swift
 //  
 //
 //  Created by Danny Sung on 1/27/23.
@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Match rule to match exactly domain name given
 public struct Domains: Match {
     public let rawValues: [String]
 

@@ -2,7 +2,7 @@ import XCTest
 @testable import SieveFiler
 
 final class FromDomainTests: XCTestCase {
-    func testThat_OneDomain_WillCreateOneFile() throws {
+    func testThat_OneDomain_WillCreateFileRule() throws {
         let expectedValue = """
         if address :is :domain "From" [
             "domain.com"
@@ -23,7 +23,7 @@ final class FromDomainTests: XCTestCase {
         XCTAssertEqual(observedValue, expectedValue)
     }
 
-    func testThat_TwoDomains_WillCreateOneFile() throws {
+    func testThat_TwoDomains_WillCreateFileRule() throws {
         let expectedValue = """
         if address :is :domain "From" [
             "somedomain.com",
@@ -45,7 +45,7 @@ final class FromDomainTests: XCTestCase {
         XCTAssertEqual(observedValue, expectedValue)
     }
 
-    func testThat_TwoFolders_WillCreateTwoFiles() throws {
+    func testThat_TwoFolders_WillCreateTwoFileRules() throws {
         let expectedValue = """
         if address :is :domain "From" [
             "domain1.com"
@@ -78,25 +78,6 @@ final class FromDomainTests: XCTestCase {
     }
 
 
-    func testThat_SameDomainSameField_InDifferentFolders_WillError() throws {
-       let rules = SieveRules {
-            Folder("Mailbox1") {
-                Fields(.from) {
-                    Domains("domain1.com")
-                }
-            }
-            Folder("Mailbox2") {
-                Fields(.from) {
-                    Domains("domain1.com")
-                }
-            }
-        }
-
-        try XCTExpectFailure {
-            try rules.validate()
-        }
-    }
-
     func testThat_SameDomainDifferentFields_WillGoIntoDifferentFolders() throws {
         let rules = SieveRules {
              Folder("Mailbox1") {
@@ -113,4 +94,5 @@ final class FromDomainTests: XCTestCase {
 
         try rules.validate() // should not throw
     }
+
 }

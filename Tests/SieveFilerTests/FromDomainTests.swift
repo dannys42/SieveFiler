@@ -78,7 +78,7 @@ final class FromDomainTests: XCTestCase {
     }
 
 
-    func testThat_SameDomain_InDifferentFolders_WillError() throws {
+    func testThat_SameDomainSameField_InDifferentFolders_WillError() throws {
        let rules = SieveRules {
             Folder("Mailbox1") {
                 Fields(.from) {
@@ -95,5 +95,22 @@ final class FromDomainTests: XCTestCase {
         try XCTExpectFailure {
             try rules.validate()
         }
+    }
+
+    func testThat_SameDomainDifferentFields_WillGoIntoDifferentFolders() throws {
+        let rules = SieveRules {
+             Folder("Mailbox1") {
+                 Fields(.from) {
+                     Domains("domain1.com")
+                 }
+             }
+             Folder("Mailbox2") {
+                 Fields(.replyTo) {
+                     Domains("domain1.com")
+                 }
+             }
+        }
+
+        try rules.validate() // should not throw
     }
 }

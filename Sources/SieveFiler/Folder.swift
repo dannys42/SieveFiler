@@ -53,3 +53,11 @@ extension Folder: UniqueKeys {
         return returnValues
     }
 }
+
+extension Folder: HasValidation {
+    public func validate() throws {
+        for fields in self.fields {
+            try fields.validate()
+        }
+    }
+}

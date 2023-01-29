@@ -38,6 +38,22 @@ public struct Domains: Match {
         }
         """)]
     }
+
+    public func validate() throws {
+        try Self.validate(domains: self.rawValues)
+    }
+
+    static func validate(domains: [String]) throws {
+        for domain in domains {
+            if domain.contains("@") {
+                throw DomainFailures.domainMustNotContainAtSymbol
+            }
+            if domain.contains("*") {
+                throw DomainFailures.domainMustNotContainAsteriskSymbol
+            }
+
+        }
+    }
 }
 
 extension Domains: UniqueKeys {

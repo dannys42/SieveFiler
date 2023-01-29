@@ -39,6 +39,8 @@ public struct SieveRules {
                     existingRules[key] = folder.folder
                 }
             }
+
+            try folder.validate()
         }
     }
 

@@ -65,3 +65,11 @@ extension [Fields]: UniqueKeys {
         return returnValues
     }
 }
+
+extension Fields: HasValidation {
+    public func validate() throws {
+        for match in self.matches {
+            try match.validate()
+        }
+    }
+}

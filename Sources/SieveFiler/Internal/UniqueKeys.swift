@@ -10,3 +10,7 @@ import Foundation
 public protocol UniqueKeys {
     var uniqueKeys: [String] { get }
 }
+
+public protocol HasValidation {
+    func validate() throws
+}

@@ -49,6 +49,10 @@ public struct SubDomains: Match {
             """),
         ]
     }
+
+    public func validate() throws {
+        try Domains.validate(domains: self.rawValues)
+    }
 }
 
 extension SubDomains: UniqueKeys {

@@ -47,4 +47,34 @@ final class ValidationTests: XCTestCase {
         }
     }
 
+    // MARK: - Enforce valid domain symbols
+
+    func testThat_Domain_CannotHaveAtSymbol() throws {
+        let rules = SieveRules {
+             Folder("Mailbox1") {
+                 Fields(.from) {
+                     Domains("@domain1.com")
+                 }
+             }
+         }
+
+         try XCTExpectFailure {
+             try rules.validate()
+         }
+    }
+
+    func testThat_SubDomain_CannotHaveAsteriskSymbol() throws {
+        let rules = SieveRules {
+             Folder("Mailbox1") {
+                 Fields(.from) {
+                     Domains("*.domain1.com")
+                 }
+             }
+         }
+
+         try XCTExpectFailure {
+             try rules.validate()
+         }
+    }
+
 }

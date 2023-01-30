@@ -11,6 +11,8 @@ import Foundation
 public struct SubDomains: Match {
     public let rawValues: [String]
 
+    public let outputOrder: Int = 30
+
     public init(_ string: String...) {
         self.rawValues = string
     }
@@ -29,7 +31,7 @@ public struct SubDomains: Match {
             }
         }
         return [
-            SieveSource(
+            SieveSource(order: .exactDomain,
             """
             if address :is :domain \(fieldText) [
                 \(self.rawValues.map({ "\""+$0+"\"" }).joined(separator: ",\n    "))
@@ -38,7 +40,7 @@ public struct SubDomains: Match {
                 stop;
             }
             """),
-            SieveSource(
+            SieveSource(order: .anySubdomain,
             """
             if address :match :domain \(fieldText) [
                 \(self.rawValues.map({ "\"*."+$0+"\"" }).joined(separator: ",\n    "))

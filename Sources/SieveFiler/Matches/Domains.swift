@@ -28,7 +28,7 @@ public struct Domains: Match {
                 fieldText = "[ " + fieldNames + " ]"
             }
         }
-        return [SieveSource(
+        return [SieveSource(order: .exactDomain,
         """
         if address :is :domain \(fieldText) [
             \(self.rawValues.map({ "\""+$0+"\"" }).joined(separator: ",\n    "))

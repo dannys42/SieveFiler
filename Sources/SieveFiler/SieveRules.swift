@@ -62,6 +62,8 @@ public struct SieveRules {
             sources.append(contentsOf: folderSources)
         }
 
+        sources = sources.sorted(by: { $0.outputOrder < $1.outputOrder })
+
         let sourceText = sources.map { $0.string }
         return sourceText.joined(separator: "\n")
     }

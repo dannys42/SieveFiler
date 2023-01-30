@@ -11,6 +11,8 @@ import Foundation
 public struct Addresses: Match {
     public let rawValues: [String]
 
+    public let outputOrder: Int = 10
+
     public init(_ string: String...) {
         self.rawValues = string
     }
@@ -28,7 +30,7 @@ public struct Addresses: Match {
                 fieldText = "[ " + fieldNames + " ]"
             }
         }
-        return [SieveSource(
+        return [SieveSource(order: .exactAddress,
         """
         if address :is :all \(fieldText) [
             \(self.rawValues.map({ "\""+$0+"\"" }).joined(separator: ",\n    "))

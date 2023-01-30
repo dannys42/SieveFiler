@@ -7,6 +7,7 @@
 * Ensure output sieve rules are ordered from specific to general
 * Ensure full email addresses are given for `Addresses()`
 * Ensure only domain names are given for `Domains()` and `SubDomains()`
+* Ensure conflicting rules are not possible (e.g. cannot specify that the same email address goes to different folders)
 * Not overewite the file if any errors are detected
 
 

@@ -72,7 +72,11 @@ public struct SieveRules {
     }
 
     @discardableResult
-    public func output(_ file: String) throws -> Self {
+    public func output(_ file: String, shouldValidate: Bool = true) throws -> Self {
+
+        if shouldValidate {
+            try self.validate()
+        }
 
         let string = self.asString
         try string.write(toFile: file, atomically: true, encoding: .utf8)

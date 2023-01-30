@@ -26,7 +26,8 @@ public struct SieveRules {
         self.folders = try content()
     }
 
-    public func validate() throws {
+    @discardableResult
+    public func validate() throws -> Self {
         var existingRules: [String:String] = [:]
         for folder in folders {
             let keys = folder.fields.uniqueKeys
@@ -42,6 +43,8 @@ public struct SieveRules {
 
             try folder.validate()
         }
+
+        return self
     }
 
     @discardableResult
@@ -69,7 +72,7 @@ public struct SieveRules {
     }
 
     @discardableResult
-    public func output(_ file: String) throws -> SieveRules {
+    public func output(_ file: String) throws -> Self {
 
         let string = self.asString
         try string.write(toFile: file, atomically: true, encoding: .utf8)

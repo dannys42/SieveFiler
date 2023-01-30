@@ -67,8 +67,13 @@ public struct SieveRules {
 
         sources = sources.sorted(by: { $0.outputOrder < $1.outputOrder })
 
+        let header = """
+                     require ["fileinto", "envelope", "regex"];
+
+                     """
+
         let sourceText = sources.map { $0.string }
-        return sourceText.joined(separator: "\n")
+        return header + sourceText.joined(separator: "\n")
     }
 
     @discardableResult

@@ -69,7 +69,7 @@ public struct SieveRules {
 
         let header = """
                      require ["fileinto", "envelope", "regex"];
-
+                     \n
                      """
 
         let sourceText = sources.map { $0.string }

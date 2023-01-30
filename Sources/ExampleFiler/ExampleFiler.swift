@@ -23,7 +23,7 @@ struct Repeat: ParsableCommand {
 
     mutating func run() throws {
 
-            SieveRules {
+            try SieveRules {
                 Folder("SomeMailbox") {
                     Fields(.replyTo, .from) {
                         Domains("abc", "def")

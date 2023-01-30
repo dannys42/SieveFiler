@@ -69,7 +69,10 @@ public struct SieveRules {
     }
 
     @discardableResult
-    public func output(_ file: String) -> SieveRules {
+    public func output(_ file: String) throws -> SieveRules {
+
+        let string = self.asString
+        try string.write(toFile: file, atomically: true, encoding: .utf8)
 
         return self
     }

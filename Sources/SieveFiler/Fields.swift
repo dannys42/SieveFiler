@@ -9,9 +9,12 @@ import Foundation
 
 
 public struct Fields {
-    public enum Field: String, Identifiable {
+    public enum Field: String, CaseIterable, Identifiable {
         case from = "From"
         case replyTo = "Reply-To"
+        case to = "To"
+        case cc = "Cc"
+        case bcc = "Bcc"
 
         public var id: String {
             return self.rawValue

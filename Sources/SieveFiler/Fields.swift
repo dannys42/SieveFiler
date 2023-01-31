@@ -26,7 +26,11 @@ public struct Fields {
 
     public init(_ field: Field, _ additionalFields: Field..., @MatchBuilder matches: () -> [any Match]) {
 
-        self.fields = [field] + additionalFields
+        self.init([field] + additionalFields, matches: matches)
+    }
+
+    public init(_ fields: [Field], @MatchBuilder matches: () -> [any Match]) {
+        self.fields = fields
         self.matches = matches()
     }
 

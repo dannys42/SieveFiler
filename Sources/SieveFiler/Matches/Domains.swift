@@ -11,8 +11,12 @@ import Foundation
 public struct Domains: Match {
     public let rawValues: [String]
 
-    public init(_ string: String...) {
-        self.rawValues = string
+    public init(_ domain: String...) {
+        self.init(domain)
+    }
+
+    public init(_ domains: [String]) {
+        self.rawValues = domains
     }
 
     public func fileIntoRule(folder: Folder, fields: [Fields.Field]) -> [SieveSource] {

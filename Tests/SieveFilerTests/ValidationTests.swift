@@ -42,7 +42,7 @@ final class ValidationTests: XCTestCase {
             }
         }
 
-        try XCTExpectFailure {
+        _ = try XCTExpectFailure {
             try rules.validate()
         }
     }
@@ -58,7 +58,7 @@ final class ValidationTests: XCTestCase {
              }
          }
 
-         try XCTExpectFailure {
+         _ = try XCTExpectFailure {
              try rules.validate()
          }
     }
@@ -72,7 +72,7 @@ final class ValidationTests: XCTestCase {
              }
          }
 
-         try XCTExpectFailure {
+         _ = try XCTExpectFailure {
              try rules.validate()
          }
     }
@@ -88,7 +88,7 @@ final class ValidationTests: XCTestCase {
              }
          }
 
-         try XCTExpectFailure {
+         _ = try XCTExpectFailure {
              try rules.validate()
          }
     }
@@ -102,7 +102,7 @@ final class ValidationTests: XCTestCase {
              }
          }
 
-         try XCTExpectFailure {
+         _ = try XCTExpectFailure {
              try rules.validate()
          }
     }
@@ -116,7 +116,7 @@ final class ValidationTests: XCTestCase {
              }
          }
 
-         try XCTExpectFailure {
+         _ = try XCTExpectFailure {
              try rules.validate()
          }
     }
@@ -130,7 +130,7 @@ final class ValidationTests: XCTestCase {
              }
          }
 
-         try XCTExpectFailure {
+         _ = try XCTExpectFailure {
              try rules.validate()
          }
     }

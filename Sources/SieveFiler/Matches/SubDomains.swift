@@ -13,8 +13,12 @@ public struct SubDomains: Match {
 
     public let outputOrder: Int = 30
 
-    public init(_ string: String...) {
-        self.rawValues = string
+    public init(_ subdomain: String...) {
+        self.init(subdomain)
+    }
+
+    public init(_ subdomains: [String]) {
+        self.rawValues = subdomains
     }
 
     public func fileIntoRule(folder: Folder, fields: [Fields.Field]) -> [SieveSource] {

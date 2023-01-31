@@ -13,8 +13,12 @@ public struct Addresses: Match {
 
     public let outputOrder: Int = 10
 
-    public init(_ string: String...) {
-        self.rawValues = string
+    public init(_ address: String...) {
+        self.init(address)
+    }
+
+    public init(_ addresses: [String]) {
+        self.rawValues = addresses
     }
 
     public func fileIntoRule(folder: Folder, fields: [Fields.Field]) -> [SieveSource] {

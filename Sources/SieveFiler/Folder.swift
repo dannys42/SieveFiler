@@ -61,3 +61,10 @@ extension Folder: HasValidation {
         }
     }
 }
+
+extension Folder {
+    public init(_ folder: String, fields: Fields.Field..., @MatchBuilder matches: () -> [any Match]) {
+        self.folder = folder
+        self.fields = [ Fields(fields, matches: matches) ]
+    }
+}

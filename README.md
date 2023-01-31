@@ -55,7 +55,7 @@ This will create rules in the following order:
 * Any mail with a `From` or `Reply-To` field with a domain or any subdomain of `myschool.edu` will also go into `Classmates`
 
 
-Additional notes:
+Additional conveniences:
 
 * `Domains`, `SubDomains`, and `Addresses` can also take array arguments to allow for flexibility in trailing commas.  For example:
 
@@ -70,3 +70,17 @@ Additional notes:
     }
 
 ```
+
+
+* In cases where only one type of `Fields` matching is needed, you can specify that field on the `Folder()` line.  For example:
+
+```swift
+    Folder("Parents", fields: .from) {
+        Addresses([
+            "mom@myfamily.xyz",
+            "dad@myfamily.xyz",
+        ])
+    }
+
+```
+

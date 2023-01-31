@@ -53,3 +53,20 @@ This will create rules in the following order:
 * Mail from anyone else in the `myfamily.xyz` domain will go to `Family`
 * Any mail with a `From` or `Reply-To` field with a domain of exactly `myschoolalumnis.edu` will go into `Classmates`
 * Any mail with a `From` or `Reply-To` field with a domain or any subdomain of `myschool.edu` will also go into `Classmates`
+
+
+Additional notes:
+
+* `Domains`, `SubDomains`, and `Addresses` can also take array arguments to allow for flexibility in trailing commas.  For example:
+
+```swift
+    Folder("Parents") {
+        Fields(.from) {
+            Addresses([
+            	"mom@myfamily.xyz",
+            	"dad@myfamily.xyz",
+            ])
+        }
+    }
+
+```

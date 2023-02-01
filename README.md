@@ -4,11 +4,12 @@
 ## Features
 `SieveFiler` will:
 
-* Ensure output sieve rules are ordered from specific to general
+* Ensure generated sieve rules are ordered from specific to general
 * Ensure full email addresses are given for `Addresses()`
 * Ensure only domain names are given for `Domains()` and `SubDomains()`
 * Ensure conflicting rules are not possible (e.g. cannot specify that the same email address goes to different folders)
-* Not overewite the file if any errors are detected
+* Not overwrite the file if any errors are detected
+* `SubDomains()` matcher makes it easy to specify rules to match either "@domain.xyz" or "*.domain.xyz".
 
 ## Requirements
 

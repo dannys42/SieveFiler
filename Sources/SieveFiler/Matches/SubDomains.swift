@@ -46,7 +46,7 @@ public struct SubDomains: Match {
             """),
             SieveSource(order: .anySubdomain,
             """
-            if address :match :domain \(fieldText) [
+            if address :matches :domain \(fieldText) [
                 \(self.rawValues.map({ "\"*."+$0+"\"" }).joined(separator: ",\n    "))
             ] {
                 fileinto "\(folder.folder)";

@@ -30,7 +30,7 @@ final class OrderTests: XCTestCase {
             fileinto "Mailbox1";
             stop;
         }
-        if address :match :domain "From" [
+        if address :matches :domain "From" [
             "*.domain1.com"
         ] {
             fileinto "Mailbox1";

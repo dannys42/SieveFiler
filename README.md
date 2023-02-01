@@ -1,5 +1,5 @@
 # SieveFiler
-`SieveFiler` is a Swift-based DSL to aid in creating Sieve "fileinto" rules.  The primary goal is to make it easier and less error-prone to creating rules for filing mail into specific folders.
+`SieveFiler` is a Swift-based DSL to aid in creating Sieve ([RFC 5228](https://www.rfc-editor.org/rfc/rfc5228)) "fileinto" rules for server-side mail sorting.  The primary goal is to make it easier and less error-prone to creating rules for filing mail into specific folders.
 
 ## Features
 `SieveFiler` will:
@@ -10,6 +10,9 @@
 * Ensure conflicting rules are not possible (e.g. cannot specify that the same email address goes to different folders)
 * Not overewite the file if any errors are detected
 
+## Requirements
+
+[Swift Compiler 5.7+](https://www.swift.org/download/).  By utilizing the [Swift](https://www.swift.org) language, you can use Xcode or any other IDE/text editor to aid in command completion and online help as  you write your rules.
 
 ## Recommended Usage
 

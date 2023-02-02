@@ -12,6 +12,8 @@ final class AddressTests: XCTestCase {
 
     func testThat_OneAddress_WillFile() throws {
         let expectedValue = """
+        require ["fileinto", "envelope", "regex"];
+        
         if address :is :all "From" [
             "someone@domain1.com"
         ] {

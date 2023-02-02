@@ -13,6 +13,8 @@ final class SubDomainTests: XCTestCase {
 
     func testThat_FromOneSubdomain_WillCreateFileRules() {
         let expectedValue = """
+        require ["fileinto", "envelope", "regex"];
+
         if address :is :domain "From" [
             "domain1.com"
         ] {

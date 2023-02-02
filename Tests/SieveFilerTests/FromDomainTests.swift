@@ -4,6 +4,8 @@ import XCTest
 final class FromDomainTests: XCTestCase {
     func testThat_OneDomain_WillCreateFileRule() throws {
         let expectedValue = """
+        require ["fileinto", "envelope", "regex"];
+
         if address :is :domain "From" [
             "domain.com"
         ] {
@@ -25,6 +27,8 @@ final class FromDomainTests: XCTestCase {
 
     func testThat_TwoDomains_WillCreateFileRule() throws {
         let expectedValue = """
+        require ["fileinto", "envelope", "regex"];
+
         if address :is :domain "From" [
             "somedomain.com",
             "anotherdomain.com"
@@ -47,6 +51,8 @@ final class FromDomainTests: XCTestCase {
 
     func testThat_TwoFolders_WillCreateTwoFileRules() throws {
         let expectedValue = """
+        require ["fileinto", "envelope", "regex"];
+
         if address :is :domain "From" [
             "domain1.com"
         ] {

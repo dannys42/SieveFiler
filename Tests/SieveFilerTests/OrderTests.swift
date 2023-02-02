@@ -12,6 +12,8 @@ final class OrderTests: XCTestCase {
 
     func testThat_OutputOrder_Is_Address_Domain_Subdomain() throws {
         let expectedValue = """
+        require ["fileinto", "envelope", "regex"];
+
         if address :is :all "From" [
             "someone@domain1.com"
         ] {
